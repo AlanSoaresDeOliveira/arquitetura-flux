@@ -4,7 +4,7 @@ import { MdRemoveCircleOutline, MdAddCircleOutline, MdDelete} from 'react-icons/
 
 import { Container, ProductTable, Total } from './styles';
 
-const Cart = ({ cart }) => {
+const Cart = ({ cart, dispatch }) => {
   return (
     <Container>
       <ProductTable>
@@ -45,7 +45,7 @@ const Cart = ({ cart }) => {
                 <strong>R$258,80</strong>
               </td>
               <td>
-                <button type="button">
+                <button type="button" onClick={() => dispatch({ type: 'REMOVE_FROM_CART', id: product.id})}>
                   <MdDelete size={20} color="#7159c1" />
                 </button>
               </td>
