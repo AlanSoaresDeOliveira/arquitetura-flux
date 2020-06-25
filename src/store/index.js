@@ -4,7 +4,13 @@ import creatSagaMiddleware from 'redux-saga';
 import rootReducer from './modules/rootReducer';
 import rootSaga from './modules/rootSaga';
 
-const sagaMiddleware = creatSagaMiddleware();
+const sagaMonitor = process.env.NODE_ENV === 'development' 
+? console.tron.createSagaMonitor()
+: null;
+
+const sagaMiddleware = creatSagaMiddleware({
+  sagaMonitor,
+});
 
 const enhacer = process.env.NODE_ENV === 'development' 
   ? compose(
